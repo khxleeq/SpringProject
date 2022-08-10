@@ -33,7 +33,7 @@ public class FlowerControllerIntegrationTest {
                 .contentType(MediaType.APPLICATION_JSON);
 
         ResultMatcher checkStatus = status().isCreated();
-        Flower testSavedFlower = new Flower("Rose", "Red", "Sweet");
+        Flower testSavedFlower = new Flower(1,"Rose", "Red", "Sweet");
         ResultMatcher checkBody = content().json(this.mapper.writeValueAsString(testSavedFlower));
 
 
@@ -50,7 +50,7 @@ public class FlowerControllerIntegrationTest {
         this.mvc.perform(post("/createFlower").content(this.mapper.writeValueAsString(new Flower("Rose", "Red", "Sweet")))
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isCreated())
-                .andExpect(content().json(this.mapper.writeValueAsString(new Flower("Rose", "Red", "Sweet"))));
+                .andExpect(content().json(this.mapper.writeValueAsString(new Flower(1,"Rose", "Red", "Sweet"))));
     }
 
 

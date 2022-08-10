@@ -27,9 +27,9 @@ public class FlowerController {
     }
 
     @PostMapping("/createFlower")
-    public Flower makeFlower(@RequestBody Flower flower) {
+    public ResponseEntity<Flower> makeFlower(@RequestBody Flower flower) {
         System.out.println("Body: " + flower);
-        return this.service.makeFlower(flower);
+        return new ResponseEntity<Flower>(this.service.makeFlower(flower), HttpStatus.CREATED);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/getAll")

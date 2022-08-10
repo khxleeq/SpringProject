@@ -24,6 +24,13 @@ public class Flower {
         this.scent = scent;
     }
 
+    public Flower(Integer id, String name, String colour, String scent) {
+        Id = id;
+        this.name = name;
+        this.colour = colour;
+        this.scent = scent;
+    }
+
     public Flower() {
         super();
     }
