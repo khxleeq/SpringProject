@@ -40,7 +40,7 @@ public class FlowerController {
     @GetMapping("/get/{id}")
     public ResponseEntity<Flower> getById(@PathVariable int id) {
         System.out.println("ID: " + id);
-        return new ResponseEntity<Flower>(this.service.getById(id),HttpStatus.I_AM_A_TEAPOT);
+        return new ResponseEntity<Flower>(this.service.getById(id),HttpStatus.OK);
     }
 
     @PatchMapping("/update/{id}")

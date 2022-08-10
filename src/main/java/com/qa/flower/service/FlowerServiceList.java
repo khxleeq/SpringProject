@@ -20,7 +20,7 @@ public class FlowerServiceList implements FlowerService {
     @Override
     public Flower makeFlower(Flower flower) {
         this.flowers.add(flower);
-        return flowers.get(this.flowers.size() -1);
+        return flowers.get(this.flowers.size() - 1);
     }
 
     @Override

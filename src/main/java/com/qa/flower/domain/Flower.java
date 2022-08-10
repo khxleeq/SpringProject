@@ -11,21 +11,21 @@ public class Flower {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    private Integer Id;
-
+    private Integer id;
     private String name;
     private String colour;
     private String scent;
 
-    public Flower(String name, String colour, String scent) {
+
+    public Flower(Integer id, String name, String colour, String scent) {
         super();
+        this.id = id;
         this.name = name;
         this.colour = colour;
         this.scent = scent;
     }
-
-    public Flower(Integer id, String name, String colour, String scent) {
-        Id = id;
+    public Flower(String name, String colour, String scent) {
+        super();
         this.name = name;
         this.colour = colour;
         this.scent = scent;
@@ -36,15 +36,15 @@ public class Flower {
     }
 
     public Integer getId() {
-        return Id;
+        return this.id;
     }
 
     public void setId(Integer id) {
-        Id = id;
+        this.id = id;
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {
@@ -52,7 +52,7 @@ public class Flower {
     }
 
     public String getColour() {
-        return colour;
+        return this.colour;
     }
 
     public void setColour(String colour) {
@@ -60,10 +60,16 @@ public class Flower {
     }
 
     public String getScent() {
-        return scent;
+        return this.scent;
     }
 
     public void setScent(String scent) {
         this.scent = scent;
     }
+
+    @Override
+    public String toString() {
+        return "Flower [name=" + this.name + ", colour=" + this.colour + ", scent=" + this.scent + "]";
+    }
+
 }
