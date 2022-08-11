@@ -57,7 +57,7 @@ public class FlowerControllerIntegrationTest {
 
 
     @Test
-    void testGet() throws Exception {
+    void testGetAll() throws Exception {
         List<Flower> flowers = List.of(
                 new Flower(1, "Rose", "Red", "Sweet"),
                 new Flower(2, "Rose", "White", "Sweet"));
@@ -74,18 +74,23 @@ public class FlowerControllerIntegrationTest {
     }
 
     @Test
-    void testUpdate() throws Exception {
-
-
+    void testUpdateById() throws Exception {
+        this.mvc.perform(
+                        patch("/update/1")
+                                .param("name", "Rose")
+                                .param("colour", "Red")
+                                .param("scent", "Sweet"))
+                .andExpect(status().isOk())
+                .andExpect(content().json(this.mapper.writeValueAsString(new Flower(1, "Rose", "Red", "Sweet"))));
     }
 
     @Test
-      void testDelete() throws Exception {
-        ResultMatcher checkBody = content()
-                .json(this.mapper.writeValueAsString(new Flower(1, "Rose", "Red", "Sweet")));
-
-        this.mvc.perform(delete("/remove/1")).andExpect(status().isOk()).andExpect(checkBody);
-
+    void testDelete() throws Exception{
+        List<Flower> flower = List.of(
+                new Flower(1, "Rose", "Red", "Sweet"),
+                new Flower(2, "Rose", "White", "Sweet"));
+        ResultMatcher checkBody = content().json(this.mapper.writeValueAsString(flower));
+        this.mvc.perform(delete("/remove/1"));
     }
 
 }
