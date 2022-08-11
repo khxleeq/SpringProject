@@ -37,7 +37,8 @@ public class FlowerServiceDB  implements  FlowerService {
 
     @Override
     public Flower updateFlower(int id, String name, String colour, String scent) {
-        Flower toUpdate = this.getById(id);
+        Flower toUpdate = this.repo.findById(id).get(); // fetches the existing data from the db
+
         if (name != null && !name.isBlank())
             toUpdate.setName(name);
         if (colour != null)
@@ -45,7 +46,7 @@ public class FlowerServiceDB  implements  FlowerService {
         if (scent != null)
             toUpdate.setScent(scent);
 
-        return this.repo.save(toUpdate);
+        return this.repo.save(toUpdate); // saves the new data and returns it
 
     }
 
