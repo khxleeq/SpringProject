@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.RequestBuilder;
@@ -22,6 +23,7 @@ import java.util.List;
 @AutoConfigureMockMvc
 @Sql(scripts = { "classpath:flower-schema.sql",
         "classpath:flower-data.sql" }, executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
+@ActiveProfiles("test") // set Profile to "test" so it uses the test app-test.properties
 public class FlowerControllerIntegrationTest {
 
     @Autowired
